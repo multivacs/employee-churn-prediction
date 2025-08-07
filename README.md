@@ -15,3 +15,34 @@ Target Variable (Churn): A binary variable indicating whether the employee has l
 Target Variable Distribution
 Retained Employees (0): ~80% of the dataset.
 Churned Employees (1): ~20% of the dataset.
+
+
+✅ Commit conventions
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Examples:
+
+```
+feat: add web scraper for news articles using BeautifulSoup
+
+feat: add sentiment classifier using DistilBERT with PyTorch
+
+fix: correct tokenization bug in preprocessing script
+
+refactor: move text cleaning to utils module
+
+docs: add README with project overview and usage
+
+style: format all Python files with black
+
+test: add unit tests for sentiment predictor
+
+chore: add .gitignore and requirements.txt
+```
