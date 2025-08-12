@@ -27,6 +27,17 @@ Churned Employees (1): ~20% of the dataset.
 [optional footer(s)]
 ```
 
+Types:
+- `feat`: a new feature or functionality
+- `fix`: a bug fix
+- `docs`: documentation changes (README, comments, etc)
+- `refactor`: code changes that improve structure, not behavior
+- `test`: adding or fixing tests
+- `chore`: other tasks like configs, dependencies, or data files
+- `build`: changes related to the build system or dependencies
+- `ci`: CI/CD configuration changes
+- `revert`: reverts a previous commit
+
 Examples:
 
 ```
