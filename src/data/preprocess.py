@@ -17,8 +17,8 @@ def process_categorical(df: pd.DataFrame):
     # Make a copy of dataframe
     df_processed = df.copy()
 
-    # Drop over_18 column
-    df_processed.drop(columns=['over_18'], inplace=True)
+    # Drop over_18 and gender columns
+    df_processed.drop(columns=['over_18', 'gender'], inplace=True)
 
     # Fill missing values for categorical columns
     df_processed['education'] = df_processed['education'].fillna('Bachelor')
