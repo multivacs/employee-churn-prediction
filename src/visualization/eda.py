@@ -25,3 +25,17 @@ def visualize_categorical(categoricals: pd.Series):
 
     plt.tight_layout()
     plt.show()
+
+
+def statistics_numerical(num: pd.Series):
+    """
+    Generate descriptive statistics for numerical features in a DataFrame.
+    """
+
+    statistics = num.describe().T
+    # Add median to statistics
+    statistics['median'] = num.median()
+    # Change order to get the median next to the mean
+    statistics = statistics[['count', 'mean', 'median', 'std', 'min', '25%', '50%', '75%', 'max']]
+
+    return statistics
