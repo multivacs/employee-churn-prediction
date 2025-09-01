@@ -39,3 +39,25 @@ def statistics_numerical(num: pd.Series):
     statistics = statistics[['count', 'mean', 'median', 'std', 'min', '25%', '50%', '75%', 'max']]
 
     return statistics
+
+
+def analysis_by_target(df: pd.DataFrame, target: str, feature: str):
+    """
+    Analyze the relationship between a feature and the target variable.
+    """
+
+    analysis = df.groupby(feature)[target].agg(['mean', 'count']).reset_index()
+    analysis.rename(columns={'mean': f'{target}_mean', 'count': 'total'}, inplace=True)
+    analysis = analysis.sort_values(by=f'{target}_mean', ascending=False)
+    analysis[f'{target}_mean'] = round(analysis[f'{target}_mean'] * 100, 2)
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(analysis[feature], analysis[f'{target}_mean'], color='skyblue')
+    plt.xlabel(feature)
+    plt.ylabel(f'{target} Mean (%)')
+    plt.title(f'{target} Mean by {feature}')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+    return analysis
