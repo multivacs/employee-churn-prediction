@@ -1,6 +1,17 @@
 import pandas as pd
 
 
+def preprocess_dtypes(df: pd.DataFrame):
+    """
+    Preprocess the DataFrame by converting columns to appropriate dtypes.
+    """
+    df_processed = df.copy()
+    df_processed['gender'] = df_processed['gender'].astype('object')
+    df_processed['turnover'] = df_processed['turnover'].map({'Yes': 1, 'No': 0}).astype('int8')
+
+    return df_processed
+
+
 def preprocess_drop_columns(df: pd.DataFrame):
     """
     Preprocess the DataFrame by dropping columns with too many missing values or constant values.
@@ -42,6 +53,7 @@ def preprocess_dataset(df: pd.DataFrame):
     Preprocess the DataFrame by applying all preprocessing steps.
     """
     df_processed = df.copy()
+    df_processed = preprocess_dtypes(df_processed)
     df_processed = preprocess_drop_columns(df_processed)
     df_processed = preprocess_fill_na_values(df_processed)
     return df_processed
