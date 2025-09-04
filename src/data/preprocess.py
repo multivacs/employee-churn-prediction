@@ -21,10 +21,10 @@ def preprocess_drop_columns(df: pd.DataFrame):
     df_processed = df.copy()
 
     # Remove columns with too much na values
-    df_processed.drop(columns=['years_in_position', 'work_life_balance', 'employees', 'biweekly_hours'], inplace=True)
+    df_processed.drop(columns=['years_in_position', 'work_life_balance'], inplace=True)
 
     # Remove constant columns
-    df_processed.drop(columns=['over_18'], inplace=True)
+    df_processed.drop(columns=['employees', 'over_18', 'biweekly_hours'], inplace=True)
 
     # Remove columns inconsistent
     df_processed.drop(columns=['gender'], inplace=True)
