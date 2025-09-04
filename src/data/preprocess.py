@@ -24,7 +24,10 @@ def preprocess_drop_columns(df: pd.DataFrame):
     df_processed.drop(columns=['years_in_position', 'work_life_balance', 'employees', 'biweekly_hours'], inplace=True)
 
     # Remove constant columns
-    df_processed.drop(columns=['over_18', 'gender'], inplace=True)
+    df_processed.drop(columns=['over_18'], inplace=True)
+
+    # Remove columns inconsistent
+    df_processed.drop(columns=['gender'], inplace=True)
 
     return df_processed
 
