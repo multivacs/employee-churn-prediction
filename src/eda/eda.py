@@ -1,7 +1,7 @@
 import pandas as pd
 from math import ceil
 import matplotlib.pyplot as plt
-import numpy as np
+import seaborn as sns
 
 def visualize_categorical(categoricals: pd.Series):
     """
@@ -70,25 +70,17 @@ def analysis_by_target(df: pd.DataFrame, target: str, feature: str, normalize = 
     return analysis
 
 
-def feature_engineering_economic_costs(df: pd.DataFrame):
+def correlation_matrix(df: pd.DataFrame):
     """
-    Create new features related to employee turnover costs.
+    Generate a correlation matrix heatmap for numerical features in a DataFrame.
     """
 
-    # Create annual salary feature
-    df['annual_salary'] = df['monthly_salary'] * 12
+    corr = df.corr()
 
-    # Define economic impact constants
-    conditions = [(df['annual_salary'] < 30000),
-                  (df['annual_salary'] >= 30000) & (df['annual_salary'] < 50000),
-                  (df['annual_salary'] >= 50000) & (df['annual_salary'] < 75000),
-                  (df['annual_salary'] >= 75000)]
-    
-    costs = [df.annual_salary * 0.161, # 16.1% for <30k
-             df.annual_salary * 0.197, # 19.7% for 30k-50k
-             df.annual_salary * 0.204, # 20.4% for 50k-75k
-             df.annual_salary * 0.21] # 21% for >=75k
-    
-    df['cost_of_turnover'] = np.select(conditions, costs, default=0)
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(corr, cmap='coolwarm', annot=True, fmt=".2f", square=True, cbar_kws={"shrink": .8})
+    plt.title('Correlation Matrix', fontsize=16)
+    plt.tight_layout()
+    plt.show()
 
-    return df
+    return corr

@@ -1,6 +1,7 @@
 import pandas as pd
 
 
+
 def preprocess_dtypes(df: pd.DataFrame):
     """
     Preprocess the DataFrame by converting columns to appropriate dtypes.
@@ -55,7 +56,9 @@ def preprocess_dataset(df: pd.DataFrame):
     """
     Preprocess the DataFrame by applying all preprocessing steps.
     """
-    df_processed = df.copy()
+    # Remove duplicates
+    df_processed = df.drop_duplicates().reset_index(drop=True)
+
     df_processed = preprocess_dtypes(df_processed)
     df_processed = preprocess_drop_columns(df_processed)
     df_processed = preprocess_fill_na_values(df_processed)
