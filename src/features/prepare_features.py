@@ -9,7 +9,7 @@ def prepare_features(df: pd.DataFrame):
 
     # One-hot encode categorical features
     cat_features = df.select_dtypes(include=['object']).columns
-    ohe = OneHotEncoder(sparse=False, drop='first')
+    ohe = OneHotEncoder(sparse_output=False, drop='first')
     cat_encoded = ohe.fit_transform(df[cat_features])
     cat_encoded_df = pd.DataFrame(cat_encoded, columns=ohe.get_feature_names_out(cat_features))
 
