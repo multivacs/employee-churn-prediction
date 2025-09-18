@@ -43,5 +43,6 @@ def visualize_feature_importance(model, feature_names, figsize=(10, 6)):
     ax.set_xlabel('Importance')
     ax.set_ylabel('Feature')
     ax.set_title('Feature Importance')
+    fig.tight_layout()
     plt.close(fig)  # Prevents display in non-interactive environments
     return fig
