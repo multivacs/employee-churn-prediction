@@ -16,3 +16,6 @@ PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
 # Data files
 RAW_EMPLOYEE_CHURN_FILE = RAW_DATA_DIR / "employee_churn_dataset.csv"
+
+# Figures directory
+FIGURES_DIR = BASE_DIR / "reports" / "figures"
