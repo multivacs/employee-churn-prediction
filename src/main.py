@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     # Evaluate model
     metrics = evaluate_model(y_true=test_y, y_pred=predictions, y_proba=predictions_prob)
-    print("Model Evaluation Metrics:", metrics['classification_report'])
+    print("Model Evaluation Metrics:\n", metrics['classification_report'])
     print("ROC AUC Score:", metrics['roc_auc_score'])
 
     # Visualize decision tree
