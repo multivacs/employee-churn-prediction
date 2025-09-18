@@ -45,6 +45,10 @@ if __name__ == "__main__":
     importance_fig = visualize_feature_importance(model, feature_names=train_x.columns.tolist())
     importance_fig.savefig(FIGURES_DIR / "feature_importance.png")
 
+    # Filter actual non-churn employees for scoring
+    df_actual = df_ml[df_ml['turnover'] == 0]
+    df_results = df_actual.copy()
+
     # Save results data
-    df_ml['scoring_turnover_prob'] = model.predict_proba(df_ml.drop(columns=['turnover']))[:, 1]
-    df_ml.to_csv(PROCESSED_DATA_DIR / "employee_churn_scored.csv", index=False)
+    df_results['scoring_turnover_prob'] = model.predict_proba(df_results.drop(columns=['turnover']))[:, 1]
+    df_results.to_csv(PROCESSED_DATA_DIR / "employee_churn_scored.csv", index=False)
